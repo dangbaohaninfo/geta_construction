@@ -2,7 +2,9 @@ import fs from "fs";
 import path from "path";
 import multer from "multer";
 
-const uploadDir = path.join(__dirname, "..", "..", "uploads");
+export const uploadDir = process.env.UPLOAD_DIR
+  ? path.resolve(process.env.UPLOAD_DIR)
+  : path.join(__dirname, "..", "..", "uploads");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
