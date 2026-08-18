@@ -16,11 +16,10 @@ export default function App() {
 
       <Route element={<ProtectedRoute />}>
         <Route element={<AppLayout />}>
-          <Route path="/" element={<Navigate to="/transactions" replace />} />
-          <Route path="/transactions" element={<TransactionsPage />} />
+          <Route path="/" element={<TransactionsPage />} />
 
           <Route element={<ProtectedRoute requiredRole="ADMIN" />}>
-            <Route path="/admin" element={<AdminLayout />}>
+            <Route path="/management" element={<AdminLayout />}>
               <Route index element={<DashboardPage />} />
               <Route path="users" element={<UsersPage />} />
               <Route path="projects" element={<ProjectsPage />} />

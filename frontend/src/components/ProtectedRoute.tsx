@@ -6,7 +6,7 @@ export default function ProtectedRoute({ requiredRole }: { requiredRole?: Role }
   const { user } = useAuth();
 
   if (!user) return <Navigate to="/login" replace />;
-  if (requiredRole && user.role !== requiredRole) return <Navigate to="/transactions" replace />;
+  if (requiredRole && user.role !== requiredRole) return <Navigate to="/" replace />;
 
   return <Outlet />;
 }

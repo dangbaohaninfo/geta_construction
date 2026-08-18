@@ -14,7 +14,7 @@ export default function LoginPage() {
     setError("");
     try {
       await login(email, password);
-      navigate("/transactions");
+      navigate("/");
     } catch (err: any) {
       setError(err?.response?.data?.message ?? "Đăng nhập thất bại");
     }

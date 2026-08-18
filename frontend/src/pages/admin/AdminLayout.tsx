@@ -10,16 +10,16 @@ export default function AdminLayout() {
     <div>
       <h1 className="text-xl font-semibold text-slate-800 mb-4">Quản trị</h1>
       <div className="flex gap-1 mb-6 border-b pb-3">
-        <NavLink to="/admin" end className={linkClass}>
+        <NavLink to="/management" end className={linkClass}>
           Tổng quan
         </NavLink>
-        <NavLink to="/admin/users" className={linkClass}>
+        <NavLink to="/management/users" className={linkClass}>
           Người dùng
         </NavLink>
-        <NavLink to="/admin/projects" className={linkClass}>
+        <NavLink to="/management/projects" className={linkClass}>
           Công trình
         </NavLink>
-        <NavLink to="/admin/categories" className={linkClass}>
+        <NavLink to="/management/categories" className={linkClass}>
           Danh mục chi phí
         </NavLink>
       </div>

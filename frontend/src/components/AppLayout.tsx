@@ -22,11 +22,11 @@ export default function AppLayout() {
           <div className="flex items-center gap-6">
             <span className="font-semibold text-lg text-slate-800">Quản lý chi phí công trình</span>
             <nav className="flex gap-1">
-              <NavLink to="/transactions" className={linkClass}>
+              <NavLink to="/" end className={linkClass}>
                 Giao dịch
               </NavLink>
               {user?.role === "ADMIN" && (
-                <NavLink to="/admin" className={linkClass}>
+                <NavLink to="/management" className={linkClass}>
                   Quản trị
                 </NavLink>
               )}
