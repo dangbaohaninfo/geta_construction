@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { api } from "../lib/api";
 import { formatCurrency, formatDate } from "../lib/format";
 import { useAuth } from "../lib/auth-context";
+import { NumberInput } from "../components/NumberInput";
 import type { ExpenseCategory, Project, Transaction, TransactionListResponse, TransactionType } from "../lib/types";
 
 const emptyForm = {
@@ -158,13 +159,10 @@ export default function TransactionsPage() {
           </div>
           <div>
             <label className="block text-xs font-medium text-slate-600 mb-1">Số tiền (VNĐ)</label>
-            <input
+            <NumberInput
               required
-              type="number"
-              min="0"
-              step="1000"
               value={form.amount}
-              onChange={(e) => setForm({ ...form, amount: e.target.value })}
+              onChange={(v) => setForm({ ...form, amount: v })}
               className="w-full border rounded-md px-2 py-1.5 text-sm"
             />
           </div>
