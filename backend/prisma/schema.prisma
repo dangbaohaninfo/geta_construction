@@ -3,11 +3,11 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-// SQLite has no native enum support; Role is "ADMIN" | "STAFF", TransactionType is "CHI" | "THU" (validated in app code).
+// Role is "ADMIN" | "STAFF", TransactionType is "CHI" | "THU" (validated in app code, kept as String for simplicity).
 
 model User {
   id           String        @id @default(cuid())

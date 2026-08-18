@@ -5,7 +5,6 @@ import userRoutes from "./routes/user.routes";
 import projectRoutes from "./routes/project.routes";
 import categoryRoutes from "./routes/category.routes";
 import transactionRoutes from "./routes/transaction.routes";
-import { uploadDir } from "./middlewares/upload.middleware";
 
 const app = express();
 
@@ -15,7 +14,6 @@ app.use(
   })
 );
 app.use(express.json());
-app.use("/uploads", express.static(uploadDir));
 
 app.get("/health", (_req, res) => res.json({ ok: true }));
 

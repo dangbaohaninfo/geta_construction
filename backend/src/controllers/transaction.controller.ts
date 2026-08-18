@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { z } from "zod";
 import { prisma } from "../utils/prisma";
+import { uploadAttachment } from "../utils/storage";
 
 const listQuerySchema = z.object({
   projectId: z.string().optional(),
@@ -72,6 +73,7 @@ export async function createTransaction(req: Request, res: Response) {
   const { projectId, categoryId, type, amount, date, note } = parsed.data;
 
   const file = req.file;
+  const attachmentUrl = file ? await uploadAttachment(file) : undefined;
   const transaction = await prisma.transaction.create({
     data: {
       projectId,
@@ -80,7 +82,7 @@ export async function createTransaction(req: Request, res: Response) {
       amount,
       date: new Date(date),
       note,
-      attachmentUrl: file ? `/uploads/${file.filename}` : undefined,
+      attachmentUrl,
       attachmentName: file ? file.originalname : undefined,
       createdById: req.user!.id,
     },
@@ -115,13 +117,14 @@ export async function updateTransaction(req: Request, res: Response) {
   }
 
   const file = req.file;
+  const attachmentUrl = file ? await uploadAttachment(file) : undefined;
   const { date, ...rest } = parsed.data;
   const transaction = await prisma.transaction.update({
     where: { id },
     data: {
       ...rest,
       ...(date ? { date: new Date(date) } : {}),
-      ...(file ? { attachmentUrl: `/uploads/${file.filename}`, attachmentName: file.originalname } : {}),
+      ...(attachmentUrl ? { attachmentUrl, attachmentName: file!.originalname } : {}),
     },
     include: {
       project: { select: { id: true, name: true, code: true } },
