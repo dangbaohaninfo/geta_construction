@@ -25,6 +25,9 @@ export default function AppLayout() {
               <NavLink to="/" end className={linkClass}>
                 Giao dịch
               </NavLink>
+              <NavLink to="/attendance" className={linkClass}>
+                Chấm công
+              </NavLink>
               {user?.role === "ADMIN" && (
                 <NavLink to="/management" className={linkClass}>
                   Quản trị

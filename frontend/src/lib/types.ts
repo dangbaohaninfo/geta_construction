@@ -57,6 +57,27 @@ export interface TransactionListResponse {
   totalAmount: number;
 }
 
+export interface Employee {
+  id: string;
+  name: string;
+  role?: string | null;
+  isActive: boolean;
+  createdAt: string;
+}
+
+export interface Timesheet {
+  id: string;
+  employeeId: string;
+  projectId: string;
+  date: string;
+  hoursWorked: number;
+  note?: string | null;
+  createdById: string;
+  createdAt: string;
+  employee: { id: string; name: string };
+  project: { id: string; name: string; code: string };
+}
+
 export interface ProjectSummary {
   projectId: string;
   projectName: string;

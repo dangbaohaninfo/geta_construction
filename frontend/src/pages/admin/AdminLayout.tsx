@@ -22,6 +22,9 @@ export default function AdminLayout() {
         <NavLink to="/management/categories" className={linkClass}>
           Danh mục chi phí
         </NavLink>
+        <NavLink to="/management/employees" className={linkClass}>
+          Nhân viên
+        </NavLink>
       </div>
       <Outlet />
     </div>
